@@ -1,9 +1,5 @@
 from flask import Flask, render_template, url_for, request, jsonify
-from crossdomain import crossdomain
-
-from SPARQLWrapper import SPARQLWrapper, RDF, JSON
 import requests
-import json
 
 __author__ = 'KevinGee'
 
