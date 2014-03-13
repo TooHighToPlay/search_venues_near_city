@@ -13,16 +13,26 @@ $( document ).ready(function() {
 });
 
 $('#submit').click( function() {
+
     $('#map-canvas').hide();
     $('#loading').append('<img src="http://i.imgur.com/KUJoe.gif">');
 
     var venue = $('#venue').val();
     var location = $('#location').val();
 
+    var data = {
+        query: venue,
+        near: location
+    };
 
+    $.getJSON('/search_venues', data).done(function(data) {
+        $('#test').empty();
+        $('#test').append(JSON.stringify(data.data));
 
-    //$('#loading').empty();
-    //$('#map-canvas').show();
+        $('#loading').empty();
+        $('#map-canvas').show();
+    });
+
 });
 
 function initialize() {
