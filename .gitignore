@@ -4,6 +4,9 @@
 # Foreman config
 .env
 
+# VirtualEnv files
+venv
+
 *.py[cod]
 
 # C extensions
