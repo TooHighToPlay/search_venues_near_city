@@ -1,0 +1,1 @@
+web: gunicorn iwa3:app

@@ -1,6 +1,9 @@
 # Idea folder
 .idea
 
+# Foreman config
+.env
+
 *.py[cod]
 
 # C extensions
