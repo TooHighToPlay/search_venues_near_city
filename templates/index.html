@@ -42,8 +42,15 @@
             <div>
                 <h3>{{ name }}</h3>
                 <p>URL: <a href="{{ url }}">{{ url }}</a></p>
-                <p>Phone: {{ contact.formattedPhone }}</p>
-                <p>Address: {{ location.address }}, {{ location.city }}, {{ location.cc }}</p>
+                {{#if contact.twitter}}
+                <p>Twitter: <a href="https://twitter.com/{{contact.twitter}}">{{ contact.twitter }}</a></p>
+                {{/if}}
+                {{#if contact.phone}}
+                <p>Phone: {{ contact.phone }}</p>
+                {{/if}}
+                {{#if location}}
+                <p>Address: {{#if location.address}}{{ location.address }},{{/if}} {{#if location.city}}{{ location.city }},{{/if}} {{#if location.postalCode}}{{ location.postalCode }} {{/if}} {{#if location.cc}}{{ location.cc }}{{/if}}</p>
+                {{/if}}
             </div>
         </script>
     {% endraw %}
