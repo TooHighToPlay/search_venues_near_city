@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+
+    <title>Search venues with Foursquare by TooHighToPlay</title>
+  </head>
+
+  <body>
+
+    <header>
+      <div class="container">
+        <h1>Search venues with Foursquare</h1>
+        <h2></h2>
+
+        <section id="downloads">
+          <a href="https://github.com/TooHighToPlay/search_venues_near_city/zipball/master" class="btn">Download as .zip</a>
+          <a href="https://github.com/TooHighToPlay/search_venues_near_city/tarball/master" class="btn">Download as .tar.gz</a>
+          <a href="https://github.com/TooHighToPlay/search_venues_near_city" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
+        </section>
+      </div>
+    </header>
+
+    <div class="container">
+      <section id="main_content">
+        <h2>
+<a name="app" class="anchor" href="#app"><span class="octicon octicon-link"></span></a>App</h2>
+
+<p>Intelligent Web Application 3rd assignment</p>
+
+<h2>
+<a name="description" class="anchor" href="#description"><span class="octicon octicon-link"></span></a>Description</h2>
+
+<p>Searches for venues in a given or near location.</p>
+
+<h2>
+<a name="how-to-run" class="anchor" href="#how-to-run"><span class="octicon octicon-link"></span></a>How to run</h2>
+
+<h4>
+<a name="demo" class="anchor" href="#demo"><span class="octicon octicon-link"></span></a>Demo</h4>
+
+<p>Demo is available on Heroku: <a href="http://iwa-3-assignment.herokuapp.com/">http://iwa-3-assignment.herokuapp.com/</a></p>
+
+<p>Try searching for Paradiso in Amsterdam :)</p>
+
+<h3>
+<a name="run-locally" class="anchor" href="#run-locally"><span class="octicon octicon-link"></span></a>Run locally</h3>
+
+<p>Prerequisites (must have):</p>
+
+<pre><code>* Python
+
+* virtualenv
+</code></pre>
+
+<p>For instruction of how to install these please follow the link (<a href="http://docs.python-guide.org/en/latest/starting/install/osx/">http://docs.python-guide.org/en/latest/starting/install/osx/</a>)</p>
+
+<p>Perform the following steps in terminal:</p>
+
+<pre><code>[1] git clone git@github.com:TooHighToPlay/search_venues_near_city.git
+
+[2] cd search_venues_near_city
+
+[3] virtualenv venv
+
+[4] source venv/bin/activate
+
+[5] pip install -r requirements.txt
+
+[6] gunicorn -w 4 iwa3:app
+
+[7] go to http://127.0.0.1:8000 in your browser
+
+[8] Try searching for Paradiso in Amsterdam :)
+</code></pre>
+
+<h2>
+<a name="uses" class="anchor" href="#uses"><span class="octicon octicon-link"></span></a>Uses</h2>
+
+<ul>
+<li><p>Foursquare API to search for venues near location</p></li>
+<li><p>Google Maps API v3 to visualize results</p></li>
+<li><p>Python (Flask) + JQuery + HandleBars</p></li>
+</ul>
+      </section>
+    </div>
+
+    
+  </body>
+</html>
