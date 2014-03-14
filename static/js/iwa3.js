@@ -1,6 +1,7 @@
 var map = null;
-
 var amsterdam = new google.maps.LatLng(52.37022, 4.89517);
+var popup = Handlebars.compile($("#popup-template").html());
+var markersArray = [];
 
 $( document ).ready(function() {
   	var bootstrapCSSLink = $('<link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">');
@@ -12,9 +13,17 @@ $( document ).ready(function() {
 	$('body').append(bootstrapJavaScriptLink);
 });
 
+function clearOverlays() {
+  for (var i = 0; i < markersArray.length; i++ ) {
+    markersArray[i].setMap(null);
+  }
+  markersArray.length = 0;
+}
+
 $('#submit').click( function() {
 
     $('#map-canvas').hide();
+    clearOverlays();
     $('#loading').append('<img src="http://i.imgur.com/KUJoe.gif">');
 
     var venue = $('#venue').val();
@@ -26,6 +35,8 @@ $('#submit').click( function() {
     };
 
     $.getJSON('/search_venues', data).done(function(data) {
+
+        $('#warning').hide();
 
         var venuesJSON = data.data;
         var latSum = 0;
@@ -39,12 +50,24 @@ $('#submit').click( function() {
                 //icon: 'smile.png'
             });
 
+            markersArray.push(marker);
+
             latSum += venue.location.lat;
             lngSum += venue.location.lng;
+
+            // and an infowindow
+            var popupWindow = new google.maps.InfoWindow({
+                content: popup(venue)
+            });
+
+            google.maps.event.addListener(marker, 'click', function() {
+                popupWindow.open(map, marker);
+            });
         });
 
         if (!venuesJSON || venuesJSON.length === 0) {
-            $('#info-msg').text("No data found. Please try a different query.");
+            $('#warning').show();
+            $('#warning').text("No data found. Please try a different query.");
         } else {
             // center the map
             var lat = latSum / venuesJSON.length;
@@ -62,11 +85,10 @@ $('#submit').click( function() {
 function initialize() {
     var mapOptions = {
         center: amsterdam,
-        zoom: 13
+        zoom: 12
     };
 
     map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
 }
-
 
 google.maps.event.addDomListener(window, 'load', initialize);
