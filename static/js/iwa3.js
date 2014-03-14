@@ -35,8 +35,8 @@ $('#submit').click( function() {
             var marker = new google.maps.Marker({
                 position: new google.maps.LatLng(venue.location.lat, venue.location.lng),
                 title: venue.name,
-                map: map,
-                icon: 'smile.png'
+                map: map
+                //icon: 'smile.png'
             });
 
             latSum += venue.location.lat;
