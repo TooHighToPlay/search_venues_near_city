@@ -26,8 +26,32 @@ $('#submit').click( function() {
     };
 
     $.getJSON('/search_venues', data).done(function(data) {
-        $('#test').empty();
-        $('#test').append(JSON.stringify(data.data));
+
+        var venuesJSON = data.data;
+        var latSum = 0;
+        var lngSum = 0;
+
+        venuesJSON.forEach (function (venue) {
+            var marker = new google.maps.Marker({
+                position: new google.maps.LatLng(venue.location.lat, venue.location.lng),
+                title: venue.name,
+                map: map
+                //icon: 'icon.png'
+            });
+
+            latSum += venue.location.lat;
+            lngSum += venue.location.lng;
+        });
+
+        if (!venuesJSON || venuesJSON.length === 0) {
+            $('#info-msg').text("No data found. Please try a different query.");
+        } else {
+            // center the map
+            var lat = latSum / venuesJSON.length;
+            var lng = lngSum / venuesJSON.length;
+            var latlng = new google.maps.LatLng(lat, lng);
+            map.setCenter(latlng);
+        }
 
         $('#loading').empty();
         $('#map-canvas').show();
