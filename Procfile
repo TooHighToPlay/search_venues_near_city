@@ -1,1 +1,1 @@
-web: gunicorn iwa3:app
+web: gunicorn iwa3:app -workers $WEB_CONCURRENCY
