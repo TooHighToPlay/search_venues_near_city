@@ -8,11 +8,13 @@ Searches for venues in a given or near location.
 
 ## How to run
 
-# Demo
+#### Demo
 
 Demo is available on Heroku: http://iwa-3-assignment.herokuapp.com/
 
-# Run locally
+Try searching for Paradiso in Amsterdam :)
+
+### Run locally
 
 Prerequisites (must have):
 
@@ -32,9 +34,13 @@ Perform the following steps in terminal:
 
 	[4] source venv/bin/activate
 
-	[5] pip install -r requirements-pip
+	[5] pip install -r requirements.txt
 
-	[6] gunicorn -w 4 myapp:app
+	[6] gunicorn -w 4 iwa3:app
+
+	[7] go to http://127.0.0.1:8000 in your browser
+
+	[8] Try searching for Paradiso in Amsterdam :)
 
 ## Uses
 
